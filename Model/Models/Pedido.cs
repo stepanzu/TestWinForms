@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Model.Models
 {
@@ -16,6 +17,8 @@ namespace Model.Models
         public decimal Importe { get; set; }
 
         public virtual Cliente Cliente { get; set; } = null!;
+
+        [JsonIgnore]
         public virtual ICollection<LineaPedido> LineaPedidos { get; set; }
     }
 }

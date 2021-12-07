@@ -17,6 +17,12 @@ namespace Model.Repositories
             return lc;
         }
 
+        public static List<Cliente> GetAllClientes(int page, int pageNumber)
+        {
+            List<Cliente> lc = (List<Cliente>)RepositoryUtils.MakeRequest(string.Concat(ws1, "cliente/", page, "/", pageNumber), null, "GET", "application/json", typeof(List<Cliente>));
+            return lc;
+        }
+
         public static Cliente GetCliente(int id)
         {
             Cliente c = (Cliente)RepositoryUtils.MakeRequest(string.Concat(ws1, "cliente/", id), null, "GET", "application/json", typeof(Cliente));
