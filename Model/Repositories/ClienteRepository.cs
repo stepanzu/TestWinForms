@@ -28,5 +28,11 @@ namespace Model.Repositories
             Cliente c = (Cliente)RepositoryUtils.MakeRequest(string.Concat(ws1, "cliente/", id), null, "GET", "application/json", typeof(Cliente));
             return c;
         }
+
+        public static int GetTotalPages(int pageSize)
+        {
+            int pages = (int)RepositoryUtils.MakeRequest(string.Concat(ws1, "cliente/totalPages/", pageSize), null, "GET", "application/json", typeof(int));
+            return pages;
+        }
     }
 }

@@ -26,6 +26,7 @@ namespace Controller.Controllers
             PrepareDataGrids();
             PopulateInitialDataGrids();
             HideRelationalFields();
+            InitInitialValues();
             RunApplication();
         }
 
@@ -101,6 +102,11 @@ namespace Controller.Controllers
 
         }
 
+        public void InitInitialValues()
+        {
+            this.mainForm.textBoxPageCliente.Text = "1";
+        }
+
         private void FillDataGrid(int page, int pageNumber, string tag, int? selectedId = null) 
         {
             switch (tag) 
@@ -112,21 +118,34 @@ namespace Controller.Controllers
 
                     clientesList = ClienteRepository.GetAllClientes(page, pageNumber);
                     this.mainForm.dataGridViewClientes.DataSource = clientesList;
+                    this.mainForm.dataGridViewClientes.Columns["Pedidos"].Visible = false;
                     this.mainForm.dataGridViewClientes.AutoResizeColumns();
                     this.mainForm.dataGridViewClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     break;
                 case "Pedidos":
 
                     pedidosList = PedidoRepository.GetAllPedidos(1, gridMaxRows, selectedId);
-                    this.mainForm.dataGridViewPedidos.DataSource = pedidosList;
-                    this.mainForm.dataGridViewPedidos.AutoResizeColumns();
-                    this.mainForm.dataGridViewPedidos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    if (pedidosList != null && pedidosList.Count > 0) 
+                    {
+                        this.mainForm.dataGridViewPedidos.DataSource = pedidosList;
+                        this.mainForm.dataGridViewPedidos.Columns["Cliente"].Visible = false;
+                        this.mainForm.dataGridViewPedidos.Columns["LineaPedidos"].Visible = false;
+                        this.mainForm.dataGridViewPedidos.AutoResizeColumns();
+                        this.mainForm.dataGridViewPedidos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                    
                     break;
                 case "LineasPedidos":
                     lineasList = LineaPedidoRepository.GetAllLineasPedidos(1, gridMaxRows, selectedId);
-                    this.mainForm.dataGridViewLineas.DataSource = lineasList;
-                    this.mainForm.dataGridViewLineas.AutoResizeColumns();
-                    this.mainForm.dataGridViewLineas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    if (lineasList != null && pedidosList.Count > 0) 
+                    {
+                        this.mainForm.dataGridViewLineas.DataSource = lineasList;
+                        this.mainForm.dataGridViewLineas.Columns["Articulo"].Visible = false;
+                        this.mainForm.dataGridViewLineas.Columns["Pedido"].Visible = false;
+                        this.mainForm.dataGridViewLineas.AutoResizeColumns();
+                        this.mainForm.dataGridViewLineas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                    
                     break;
                 default:
 
@@ -163,20 +182,91 @@ namespace Controller.Controllers
 
             }
 
-            //MessageBox.Show("TAG=> " + tagValue + " ID=> " + selectedId.ToString());
-
-
-
         }
+
         private void DownPage(object sender, System.EventArgs e)
         {
-            //this.textBoxPage.Text = (Convert.ToInt32(this.textBoxPage.Text) + 1).ToString();
-            //FillDataGrid(Convert.ToInt32(this.textBoxPage.Text), Results, this.textBoxOrderBy.Text);
+                          
+            string tag = (string)((Button)sender).Tag;
+            switch (tag)
+            {
+                case "Clientes":
+                    if (this.mainForm.textBoxPageCliente.Text != 1.ToString())
+                    {
+                        this.mainForm.textBoxPageCliente.Text = (Convert.ToInt32(this.mainForm.textBoxPageCliente.Text) - 1).ToString();
+                        FillDataGrid(Convert.ToInt32(this.mainForm.textBoxPageCliente.Text), gridMaxRows, "Clientes");
+
+                        this.mainForm.dataGridViewPedidos.DataSource = null;
+                        this.mainForm.dataGridViewPedidos.ClearSelection();
+                        this.mainForm.dataGridViewLineas.DataSource = null;
+                        this.mainForm.dataGridViewLineas.ClearSelection();
+                    }
+                    break;
+                case "Pedidos":
+
+                    if (pedidosList != null && pedidosList.Count > 0)
+                    {
+
+                    }
+
+                    break;
+                case "LineasPedidos":
+
+                    if (lineasList != null && pedidosList.Count > 0)
+                    {
+
+                    }
+
+                    break;
+                default:
+
+                    break;
+            }
+                   
         }
+
         private void UpPage(object sender, System.EventArgs e)
         {
-            //this.textBoxPage.Text = (Convert.ToInt32(this.textBoxPage.Text) + 1).ToString();
-            //FillDataGrid(Convert.ToInt32(this.textBoxPage.Text), Results, this.textBoxOrderBy.Text);
+            
+            string tag = (string)((Button)sender).Tag;
+            switch (tag)
+            {
+                case "Clientes":
+
+                    int totalPages = ClienteRepository.GetTotalPages(gridMaxRows);
+                    if (Convert.ToInt32(this.mainForm.textBoxPageCliente.Text) < totalPages) 
+                    {
+                        this.mainForm.textBoxPageCliente.Text = (Convert.ToInt32(this.mainForm.textBoxPageCliente.Text) + 1).ToString();
+                        FillDataGrid(Convert.ToInt32(this.mainForm.textBoxPageCliente.Text), gridMaxRows, "Clientes");
+
+                        this.mainForm.dataGridViewPedidos.DataSource = null;
+                        this.mainForm.dataGridViewPedidos.ClearSelection();
+                        this.mainForm.dataGridViewLineas.DataSource = null;
+                        this.mainForm.dataGridViewLineas.ClearSelection();
+                    }
+
+                    break;
+                case "Pedidos":
+
+                    if (pedidosList != null && pedidosList.Count > 0)
+                    {
+
+                    }
+
+                    break;
+                case "LineasPedidos":
+
+                    if (lineasList != null && pedidosList.Count > 0)
+                    {
+
+                    }
+
+                    break;
+                default:
+
+                    break;
+            }
+
         }
 
 

@@ -75,7 +75,7 @@
             this.dataGridViewLineas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewLineas.Size = new System.Drawing.Size(376, 188);
             this.dataGridViewLineas.TabIndex = 1;
-            this.dataGridViewLineas.Tag = "Lineas";
+            this.dataGridViewLineas.Tag = "LineasPedidos";
             // 
             // dataGridViewPedidos
             // 
@@ -122,6 +122,7 @@
             this.textBoxPageCliente.Name = "textBoxPageCliente";
             this.textBoxPageCliente.Size = new System.Drawing.Size(63, 27);
             this.textBoxPageCliente.TabIndex = 13;
+            this.textBoxPageCliente.Tag = "Clientes";
             // 
             // textBoxPageLinea
             // 
@@ -129,6 +130,7 @@
             this.textBoxPageLinea.Name = "textBoxPageLinea";
             this.textBoxPageLinea.Size = new System.Drawing.Size(63, 27);
             this.textBoxPageLinea.TabIndex = 14;
+            this.textBoxPageLinea.Tag = "LineasPedidos";
             // 
             // textBoxPagePedido
             // 
@@ -136,6 +138,7 @@
             this.textBoxPagePedido.Name = "textBoxPagePedido";
             this.textBoxPagePedido.Size = new System.Drawing.Size(63, 27);
             this.textBoxPagePedido.TabIndex = 15;
+            this.textBoxPagePedido.Tag = "Pedidos";
             // 
             // buttonPageBeforeCliente
             // 
@@ -143,6 +146,7 @@
             this.buttonPageBeforeCliente.Name = "buttonPageBeforeCliente";
             this.buttonPageBeforeCliente.Size = new System.Drawing.Size(35, 29);
             this.buttonPageBeforeCliente.TabIndex = 16;
+            this.buttonPageBeforeCliente.Tag = "Clientes";
             this.buttonPageBeforeCliente.Text = "<";
             this.buttonPageBeforeCliente.UseVisualStyleBackColor = true;
             // 
@@ -152,6 +156,7 @@
             this.buttonPageAfterCliente.Name = "buttonPageAfterCliente";
             this.buttonPageAfterCliente.Size = new System.Drawing.Size(35, 29);
             this.buttonPageAfterCliente.TabIndex = 17;
+            this.buttonPageAfterCliente.Tag = "Clientes";
             this.buttonPageAfterCliente.Text = ">";
             this.buttonPageAfterCliente.UseVisualStyleBackColor = true;
             // 
@@ -161,6 +166,7 @@
             this.buttonPageBeforeLinea.Name = "buttonPageBeforeLinea";
             this.buttonPageBeforeLinea.Size = new System.Drawing.Size(35, 29);
             this.buttonPageBeforeLinea.TabIndex = 18;
+            this.buttonPageBeforeLinea.Tag = "LineasPedidos";
             this.buttonPageBeforeLinea.Text = "<";
             this.buttonPageBeforeLinea.UseVisualStyleBackColor = true;
             // 
@@ -170,6 +176,7 @@
             this.buttonPageAfterLinea.Name = "buttonPageAfterLinea";
             this.buttonPageAfterLinea.Size = new System.Drawing.Size(35, 29);
             this.buttonPageAfterLinea.TabIndex = 19;
+            this.buttonPageAfterLinea.Tag = "LineasPedidos";
             this.buttonPageAfterLinea.Text = ">";
             this.buttonPageAfterLinea.UseVisualStyleBackColor = true;
             // 
@@ -179,6 +186,7 @@
             this.buttonPageBeforePedido.Name = "buttonPageBeforePedido";
             this.buttonPageBeforePedido.Size = new System.Drawing.Size(35, 29);
             this.buttonPageBeforePedido.TabIndex = 20;
+            this.buttonPageBeforePedido.Tag = "Pedidos";
             this.buttonPageBeforePedido.Text = "<";
             this.buttonPageBeforePedido.UseVisualStyleBackColor = true;
             // 
@@ -188,6 +196,7 @@
             this.buttonPageAfterPedido.Name = "buttonPageAfterPedido";
             this.buttonPageAfterPedido.Size = new System.Drawing.Size(35, 29);
             this.buttonPageAfterPedido.TabIndex = 21;
+            this.buttonPageAfterPedido.Tag = "Pedidos";
             this.buttonPageAfterPedido.Text = ">";
             this.buttonPageAfterPedido.UseVisualStyleBackColor = true;
             // 
